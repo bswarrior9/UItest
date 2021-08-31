@@ -12,6 +12,76 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+  <mat-accordion multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal data
+        </mat-panel-title>
+        <mat-panel-description>
+          What is your favorite color?
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!--Expanded Content Area-->
+      <ion-header>Expanded Form Area</ion-header>
+      <ion-item>
+        <ion-label>Enter your favorite color:</ion-label>
+        <ion-input></ion-input>
+        
+      </ion-item>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+      <ion-button  download href='https://images.pexels.com/photos/9166412/pexels-photo-9166412.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'>Download this!</ion-button>
+      <ion-item button (click)="testClick()">
+        <ion-thumbnail slot="start">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>H3 Title Text</h3>
+          <p>Icon on right</p>
+        </ion-label>
+        <ion-icon name="close-circle" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item button (click)="testClick()">
+        <ion-avatar slot="start">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-avatar>
+        <ion-label>
+          Avatar Start, Button Item
+        </ion-label>
+      </ion-item>
+      
+      <ion-item href="#">
+        <ion-label>
+          Thumbnail End, Anchor Item
+        </ion-label>
+        <ion-thumbnail slot="end">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-thumbnail>
+      </ion-item>
+      
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>H2 Title Text</h2>
+          <p>Button on right</p>
+        </ion-label>
+        <ion-button fill="outline" slot="end">View</ion-button>
+      </ion-item>
+      <ion-item button (click)="presentModal()">Open a Modal</ion-item>
+    </mat-expansion-panel>
+  </mat-accordion>
 </ion-content>

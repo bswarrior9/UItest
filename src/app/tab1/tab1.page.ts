@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {MatAccordion} from '@angular/material/expansion';
+import { ModalController } from '@ionic/angular';
+import { ModalExamplePage } from '../modal-example/modal-example.page';
+
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +10,13 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
-  constructor() {}
-
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+  constructor(public modalController: ModalController) {}
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalExamplePage,
+    });
+    return await modal.present();
+  }
 }
+
